@@ -24,16 +24,19 @@ if [ -d "$FNM_PATH" ]; then
 fi
 EOF
 
-# Apply the changes to the current shell
-echo "Sourcing /home/onyxia/.bashrc to apply changes..."
+# Create a temporary script to source .bashrc and run the commands
+echo "Creating temporary script to run commands in a new Bash session..."
+cat <<'EOS' > /tmp/temp_script.sh
+#!/bin/bash
 source /home/onyxia/.bashrc
-
-# Use fnm to install Node.js version 20 if it's not already installed
-eval "$(fnm env)"
 fnm use --install-if-missing 20
-
-# Install flowise globally using npm
 npm install -g flowise
-
-# Start flowise on port 9898
 npx flowise start --PORT=9898 &
+EOS
+
+# Make the temporary script executable
+chmod +x /tmp/temp_script.sh
+
+# Run the temporary script in a new Bash session
+echo "Running the temporary script in a new Bash session..."
+bash /tmp/temp_script.sh
