@@ -4,8 +4,5 @@ export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 nvm install 22
 
-# Install flowise globally using npm
 npm install -g flowise
-
-# Start flowise on port 9898
-npx flowise start --PORT=9898 &
+npx flowise start --PORT=9797 &
