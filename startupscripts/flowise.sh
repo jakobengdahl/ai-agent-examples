@@ -1,17 +1,8 @@
-#!/bin/bash
-
-# Download and install fnm
-curl -fsSL https://fnm.vercel.app/install | bash
-
-# Export environment variables and evaluate fnm env directly
-FNM_PATH="/home/onyxia/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env)"
-fi
-
-# Use fnm to install Node.js version 20 if it's not already installed
-fnm use --install-if-missing 20
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+nvm install 22
 
 # Install flowise globally using npm
 npm install -g flowise
