@@ -29,6 +29,7 @@ echo "Sourcing /home/onyxia/.bashrc to apply changes..."
 source /home/onyxia/.bashrc
 
 # Use fnm to install Node.js version 20 if it's not already installed
+eval "$(fnm env)"
 fnm use --install-if-missing 20
 
 # Install flowise globally using npm
